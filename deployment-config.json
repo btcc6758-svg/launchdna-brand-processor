@@ -1,0 +1,17 @@
+{
+  "chainId": 196,
+  "factory": "0x1f09daefa827f02cbb40967cc91b259763760761",
+  "processor": {
+    "name": "LaunchDNA Brand Processor",
+    "symbol": "LDNA",
+    "story": "An X Layer brand-mark foundry for IGNIX creators. Finished NAND circuits turn structured idea tags, a seed, and a chosen vault template into reproducible visual bits. Names and descriptions are generated offchain and editable. Circuit outputs are creative marks, not proof of quality, rights, or returns.",
+    "transistorSupply": "100000",
+    "mintPriceOkb": "0.00001"
+  },
+  "firstCircuit": {
+    "nandCount": 232,
+    "nIn": 22,
+    "nOut": 20,
+    "sha256": "0x4f387983befd9d96e4869a89ad1dba9962406abd6977ba9cfb815a2e259805c3"
+  }
+}

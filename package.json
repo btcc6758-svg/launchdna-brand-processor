@@ -1,0 +1,13 @@
+{
+  "name": "launchdna-brand-processor",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "check": "node scripts/circuit.test.cjs && node scripts/worker.test.mjs",
+    "build": "node scripts/export-circuit.cjs && node scripts/build-worker.cjs",
+    "prepare-mainnet": "node scripts/prepare-mainnet.mjs"
+  },
+  "devDependencies": {
+    "ethers": "6.17.0"
+  }
+}

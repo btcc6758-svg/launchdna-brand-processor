@@ -1,0 +1,16 @@
+{
+  "chainId": 196,
+  "factory": "0x1f09daefa827f02cbb40967cc91b259763760761",
+  "processor": "0xDc867bFAf8e053d3F382B487c87B3E0F9B9Bb670",
+  "transistors": "0x2fE41321a35e96e14a9Db0818E9b9CA691214615",
+  "creator": "0x1d207352dd708498cada1524eb4b36b5fa178886",
+  "creationTx": "0xa3264db68797040160db69a02bfcb95e6d0b3f0600d3d862c0993fa584f45478",
+  "mintTx": "0xbdb0c1d7e2d59781d183f46e1de7010514524d5a2638c7b192d8d8e1e2729332",
+  "tapeoutTx": "0xd5e243ee5ea5c428b624a18aa51af807a72275b2179aaa7e5319c895b993e319",
+  "circuitId": 1,
+  "nIn": 22,
+  "nOut": 20,
+  "nandCount": 232,
+  "netlistSha256": "0x4f387983befd9d96e4869a89ad1dba9962406abd6977ba9cfb815a2e259805c3",
+  "verifiedAt": "2026-10-07T15:03:03.735Z"
+}

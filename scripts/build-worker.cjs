@@ -1,0 +1,14 @@
+const fs = require("node:fs");
+const path = require("node:path");
+const root = path.join(__dirname, "..");
+const files = ["index.html", "styles.css", "links.css", "app.js", "brand-circuit.js", "render-mark.js", "circuit.json"];
+const assets = Object.fromEntries(files.map((file) => [file === "index.html" ? "/index.html" : `/${file}`, fs.readFileSync(path.join(root, "dist", file), "utf8")]));
+assets["/"] = assets["/index.html"];
+const render = fs.readFileSync(path.join(root, "dist", "render-mark.js"), "utf8");
+const entry = fs.readFileSync(path.join(root, "worker", "entry.js"), "utf8");
+const onchain = JSON.parse(fs.readFileSync(path.join(root, "onchain-deployment.json"), "utf8"));
+const bundle = `${render}\nconst ASSETS = ${JSON.stringify(assets)};\nconst ONCHAIN = ${JSON.stringify(onchain)};\n${entry}`;
+const output = path.join(root, "dist", "server", "index.js");
+fs.mkdirSync(path.dirname(output), { recursive: true });
+fs.writeFileSync(output, bundle, "utf8");
+console.log(`${output}: ${Buffer.byteLength(bundle)} bytes`);

@@ -1,0 +1,5 @@
+node_modules/
+preview-logo.png
+deployment-review.json
+.sites-runtime/
+*.zip

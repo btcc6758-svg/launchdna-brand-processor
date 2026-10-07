@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0c13">
+  <meta name="description" content="LaunchDNA：从项目设想生成名称、Ticker、简介与可复算的电路 Logo，整理成 IGNIX 发币素材。">
+  <title>LaunchDNA · 发币品牌工坊</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%230b0c13'/%3E%3Cpath d='M13 43 27 17l9 15 7-11 8 22H13Z' fill='%23d6ff62'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./links.css">
+  <script src="./brand-circuit.js" defer></script>
+  <script src="./render-mark.js" defer></script>
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand-lockup"><div class="brand-symbol" aria-hidden="true">L<span>D</span></div><div><div class="brand-word">LAUNCH<span>DNA</span></div><div class="brand-sub">发币品牌工坊</div></div></div>
+      <div class="topbar-right"><span class="network-pill"><i></i>X Layer</span><span class="top-note">为 IGNIX 发币准备品牌素材</span></div>
+    </header>
+
+    <main class="main">
+      <div class="heading-row">
+        <div><div class="eyebrow">BRAND STUDIO / VERSION 01</div><h1>从一个想法，到发币品牌。</h1><p>输入项目设想，挑选名字与视觉方向，拿到可下载的发币素材。</p></div>
+        <div class="build-status"><span class="status-orb"></span><div><strong>电路 NFT #1 已流片</strong><small>232 个 NAND · X Layer 主网</small></div></div>
+      </div>
+
+      <div class="studio-grid">
+        <section class="panel form-panel" aria-labelledby="brief-title">
+          <div class="panel-head"><div><span class="step-number">01</span><h2 id="brief-title">描述你的项目</h2></div><span class="head-meta">创意输入</span></div>
+          <form id="brand-form">
+            <label class="field-label" for="brief">项目设想或应用场景 <em>必填</em></label>
+            <textarea id="brief" name="brief" maxlength="500" placeholder="例如：X Layer 上的 AI 支付助手，像闪电一样快，风格轻松。">X Layer 上的 AI 支付助手，像闪电一样快，风格轻松。</textarea>
+            <div class="field-help">可以写用途、角色、气质和你希望出现的形象。</div>
+            <div class="two-fields">
+              <div><label class="field-label" for="domain">项目方向</label><select id="domain"><option value="auto">自动识别</option><option value="0">AI 与工具</option><option value="1">支付与 DeFi</option><option value="2">游戏与社区</option><option value="3">Meme 与文化</option></select></div>
+              <div><label class="field-label" for="mood">品牌气质</label><select id="mood"><option value="auto">自动识别</option><option value="0">未来科技</option><option value="1">轻松有趣</option><option value="2">简洁克制</option><option value="3">大胆有力</option></select></div>
+            </div>
+            <label class="field-label" for="vault">准备选择的 IGNIX 金库</label>
+            <select id="vault"><option value="0">系统金库</option><option value="1">币股金库</option><option value="2">税收分配金库</option><option value="3">定向金库</option></select>
+            <p class="micro-note">金库选择参与 Logo 图形规则；最终发币参数仍在 IGNIX 页面确认。</p>
+            <div id="form-error" class="form-error" role="alert" hidden></div>
+            <button class="primary-button" type="submit">生成 3 套品牌方案</button>
+            <p class="engine-note">名称由本地场景词库生成；目前没有接入在线 AI 模型。下载资料时本站临时生成文件，不保存输入。</p>
+          </form>
+        </section>
+
+        <section class="panel result-panel" aria-labelledby="result-title">
+          <div class="panel-head"><div><span class="step-number">02</span><h2 id="result-title">选择品牌方案</h2></div><span class="head-meta">名称 + 电路标志</span></div>
+          <div id="candidate-list" class="candidate-list" aria-label="品牌候选"></div>
+          <div class="selected-brand">
+            <div class="logo-stage"><div id="logo-preview" class="logo-preview" aria-label="Logo 预览"></div><span class="logo-caption">由电路输出绘制的 SVG 图形</span></div>
+            <div class="brand-fields"><div class="selected-label">选中的品牌</div><label class="field-label" for="chosen-name">名称</label><input id="chosen-name" class="brand-input name-input" maxlength="32" autocomplete="off"><label class="field-label" for="chosen-ticker">Ticker</label><div class="ticker-input-wrap"><span>$</span><input id="chosen-ticker" class="brand-input ticker-input" maxlength="10" autocomplete="off"></div><label class="field-label" for="chosen-description">项目简介</label><textarea id="chosen-description" class="description-input" maxlength="280"></textarea></div>
+          </div>
+          <div class="actions"><a id="download-png" class="primary-button compact" href="#">下载 Logo PNG</a><a id="download-svg" class="secondary-button" href="#">下载 SVG</a><form id="pack-form" action="/download/pack.json" method="post"><input id="pack-payload" type="hidden" name="payload"><button id="download-pack" type="submit" class="secondary-button">下载发币资料</button></form></div>
+          <div class="launch-strip"><div><strong>准备发币？</strong><span>先检查名称与 Ticker，随后到 IGNIX 填写并确认。</span></div><a href="https://ignix.bot/create?template=0" target="_blank" rel="noopener noreferrer">打开 IGNIX 发币页</a></div>
+        </section>
+      </div>
+
+      <div class="lower-grid">
+        <section class="panel evidence-panel" aria-labelledby="evidence-title"><div class="panel-head"><div><span class="step-number">03</span><h2 id="evidence-title">电路如何生成这个标志</h2></div><span class="head-meta">可独立复算</span></div><div class="evidence-grid"><div><span>电路</span><strong>LaunchDNA Brand Mark v1</strong></div><div><span>规模</span><strong id="gate-count">232 NAND · 22 输入 / 20 输出</strong></div><div><span>当前状态</span><strong class="onchain-state">电路 NFT #1 · 已流片</strong></div></div><div class="bit-flow"><div><span>输入编码</span><code id="input-bits">—</code></div><div class="flow-line" aria-hidden="true"></div><div><span>输出编码</span><code id="output-bits">—</code></div></div><div class="chain-check"><button id="verify-chain" class="text-button" type="button">用链上电路核验当前 Logo</button><p id="chain-verify-result" class="check-result" aria-live="polite">点击后读取 X Layer 电路 #1 的实际输出，与本地结果逐位比较。</p></div><p class="evidence-copy">前 16 位决定 8×8 镜像图形，后 4 位选择配色。相同输入始终得到相同 Logo。名字和简介可编辑，它们不由电路判定。</p><div class="hash-line"><span>网表 SHA-256</span><code id="netlist-hash">读取中…</code></div><a class="artifact-link" href="./circuit.json" download="launchdna-brand-circuit.json">下载完整网表与测试向量</a></section>
+        <section class="panel checks-panel" aria-labelledby="checks-title"><div class="panel-head"><div><span class="step-number">04</span><h2 id="checks-title">发币前检查</h2></div><span class="head-meta">由你最终确认</span></div><div class="check-item"><div class="check-icon">01</div><div><strong>名称与 Ticker</strong><p>上链后不能修改；确认拼写、同名项目和商标使用权。</p></div></div><div class="check-item"><div class="check-icon">02</div><div><strong>Logo 与项目简介</strong><p>下载 PNG 作为上传素材。图片和简介是 IGNIX 的展示资料。</p></div></div><div class="check-item"><div class="check-icon">03</div><div><strong>金库与发行参数</strong><p>在 IGNIX 发币页核对金库、报价资产和交易税等设置。</p></div></div><button id="check-names" class="text-button" type="button">检查近期 IGNIX 代币同名情况</button><p id="name-check-result" class="check-result" aria-live="polite">仅提供辅助检查，不能保证名称或商标独占。</p></section>
+      </div>
+      <section class="panel issuance-panel" aria-labelledby="issuance-title"><div class="panel-head"><div><span class="step-number">05</span><h2 id="issuance-title">处理器发行方案</h2></div><span class="head-meta">X Layer 主网 · 电路已流片</span></div><div class="issuance-grid"><div><span>处理器</span><strong>LaunchDNA Brand Processor</strong><small>符号 LDNA</small></div><div><span>晶体管上限</span><strong>100,000 枚</strong><small>供设计者流片新电路</small></div><div><span>NAND 铸造单价</span><strong>0.00001 OKB</strong><small>创建时已锁定</small></div><div><span>首个品牌电路</span><strong>232 NAND</strong><small>电路 NFT #1 已生成</small></div></div><div class="chain-addresses"><div><span>处理器 / 电路合约</span><code>0xDc867bFAf8e053d3F382B487c87B3E0F9B9Bb670</code></div><div><span>晶体管合约</span><code>0x2fE41321a35e96e14a9Db0818E9b9CA691214615</code></div></div><p class="issuance-note">232 枚 NAND 已铸造并在流片时消耗，电路 NFT #1 已归创建钱包所有。两个 X Layer RPC 均核对了链上电路参数及测试向量。品牌用户可使用现成电路生成标志，无需为每次生成再铸造晶体管；创世晶体管的未来专属金库规则仍由 IGNIX 决定。</p></section>
+      <footer><span>LaunchDNA · X Layer 品牌电路原型</span><span>电路结果可复算；当前页面不执行发币或钱包交易。</span></footer>
+    </main>
+  </div>
+</body>
+</html>
